@@ -4,14 +4,17 @@
 #include "MenuState.h"
 #include "MenuButton.h"
 #include "AnimatedGraphic.h"
-
+#include "WallManager.h"
+#include "PlayState.h"
 const std::string PauseState::s_pauseID = "PAUSE";
 PauseState * PauseState::s_pInstance = 0;
 
 void PauseState::s_pauseToMain()
 {
 	Mix_Chunk * ButtonS = Mix_LoadWAV("assets/selection.wav");
+	WallManager::getInstance()->clean();
 	Mix_PlayChannel(-1, ButtonS, 0);
+	PlayState::Instance()->onExit();
 	TheGame::Instance()->getStateMachine()->changeState(
 		new MenuState());
 }
@@ -75,6 +78,7 @@ bool PauseState::onExit()
 		m_gameObjects[i]->clean();
 	}
 	m_gameObjects.clear();
+	WallManager::getInstance()->clean();
 	TheTextureManager::Instance()
 		->clearFromTextureMap("resumebutton");
 	TheTextureManager::Instance()

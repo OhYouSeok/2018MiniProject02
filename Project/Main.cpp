@@ -4,7 +4,7 @@
 
 int main(int argc, char* argv[]) {
 	std::cout << "game init attempt...\n";
-	if (TheGame::Instance()->init("HEART to HEART", 550, 300, 640, 520, false))
+	if (TheGame::Instance()->init("Space Princess", 550, 300, 640, 520, false))
 	{
 		const int FPS = 60;
 		const int DELAY_TIME = 1000.0f / FPS;

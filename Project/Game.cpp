@@ -13,6 +13,10 @@ bool Game::init(std::string title, int xpos, int ypos, int width, int height, bo
 		SDL_SetRenderDrawColor(renderer, 255, 255,255, 255);
 		m_pGameStateMachine = new GameStateMachine();
 		m_pGameStateMachine->changeState(MenuState::Instance());
+		if (!TheTextureManager::Instance()->load("assets/Enemy.png",
+			"bullet", TheGame::Instance()->getRenderer())) {
+			return false;
+		}
 		return true;
 	}
 	else {
@@ -26,7 +30,7 @@ void Game::handleEvents()
 	TheInputHandler::Instance()->update();
 	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_RETURN))
 	{
-		m_pGameStateMachine->changeState(PlayState::Instance());
+		/*m_pGameStateMachine->changeState(PlayState::Instance());*/
 	}
 }
 

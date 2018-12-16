@@ -3,17 +3,15 @@
 #include "InputHandler.h"
 #include <iostream>
 #include <vector>
-#include "Bullet.h"
-class Player : public SDLGameObject
+class Bullet : public SDLGameObject
 {
 public:
-	Player(const LoaderParams* pParams);
 	virtual void draw();
 	virtual void update();
 	virtual void clean();
+	Bullet(const LoaderParams* pParams);
+	std::vector<Bullet*> getBullets() const;
 private:
 	void handleInput();
-	int speed = 3;
-	int Tick = 1000;
-	std::vector<Bullet*> m_Bullets;
+	std::vector<Bullet*> _bullets;
 };

@@ -35,8 +35,8 @@ SDL_Rect SDLGameObject::getRect()
 	SDL_Rect rect;
 	rect.x = (int)m_position.getX();
 	rect.y = (int)m_position.getY();
-	rect.w = rect.x + m_width;
-	rect.h = rect.y + m_height;
+	rect.w = m_width;
+	rect.h = m_height;
     return rect;
 
 }

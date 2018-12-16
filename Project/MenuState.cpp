@@ -60,11 +60,11 @@ bool MenuState::onEnter()
 	}
 	GameObject* MainBG = new AnimatedGraphic(new LoaderParams(0, 0, 640, 520,"MainBG"), 2);
 	GameObject* button1 = new MenuButton(
-		new LoaderParams(240, 270,145 , 50, "playbutton"),
+		new LoaderParams(260, 370,145 , 50, "playbutton"),
 		s_menuToPlay);
 
 	GameObject* button2 = new MenuButton(
-		new LoaderParams(240, 350, 145, 50, "exitbutton"),
+		new LoaderParams(260, 430, 145, 50, "exitbutton"),
 		s_exitFromMenu);
 	m_gameObjects.push_back(MainBG);
 	m_gameObjects.push_back(button1);

@@ -4,7 +4,7 @@
 #include "MenuButton.h"
 #include "AnimatedGraphic.h"
 #include "PlayState.h"
-
+#include <SDL_mixer.h>
 const std::string GameOverState::s_gameOverID = "GAMEOVER";
 
 
@@ -22,6 +22,13 @@ void GameOverState::s_restartPlay()
 	TheGame::Instance()->getStateMachine()->changeState(
 		new PlayState());
 }
+void GameOverState::s_exitFromMenu()
+{
+	Mix_Chunk * ButtonS = Mix_LoadWAV("assets/selection.wav");
+	Mix_PlayChannel(-1, ButtonS, 0);
+	std::cout << "Exit button clicked\n";
+	TheGame::Instance()->Quit();
+}
 
 bool GameOverState::onEnter()
 {
@@ -35,6 +42,11 @@ bool GameOverState::onEnter()
 	{
 		return false;
 	}
+	if (!TheTextureManager::Instance()->load("assets/Quit.png",
+		"Quit", TheGame::Instance()->getRenderer()))
+	{
+		return false;
+	}
 	if (!TheTextureManager::Instance()->load("assets/OverBG.png",
 		"OverBG", TheGame::Instance()->getRenderer()))
 	{
@@ -44,14 +56,14 @@ bool GameOverState::onEnter()
 		new  LoaderParams(0, 0,640, 520, "OverBG"), 2);
 
 	GameObject* button1 = new MenuButton(
-		new LoaderParams(240, 380, 145,50, "mainbutton"),
-		s_gameOverToMain);
-	GameObject* button2 = new MenuButton(
-		new LoaderParams(240, 300, 145, 50, "restartbutton"),
-		s_restartPlay);
+		new LoaderParams(240, 380, 145,50, "Quit"),
+		s_exitFromMenu);
+	//GameObject* button2 = new MenuButton(
+	//	new LoaderParams(240, 300, 145, 50, "restartbutton"),
+	//	s_restartPlay);
 	m_gameObjects.push_back(gameOver);
 	m_gameObjects.push_back(button1);
-	m_gameObjects.push_back(button2);
+	//m_gameObjects.push_back(button2);
 	std::cout << "entering PauseState\n";
 	return true;
 }
