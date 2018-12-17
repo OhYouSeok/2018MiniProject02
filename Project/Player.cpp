@@ -77,10 +77,13 @@ void Player::handleInput()
 		m_velocity.setY(-speed);
 	}
 	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_SPACE)) {
+
 		if (last_bullet_time + BULLET_INTERVAL <= SDL_GetTicks())
 		{
 			last_bullet_time = SDL_GetTicks();
 			BulletManager::getInstance()->PushBackBullet(new Bullet(new LoaderParams(m_position.getX()+5, m_position.getY()-15, 10, 30, "bullet")));
+			Mix_Chunk * ButtonS = Mix_LoadWAV("assets/shoot.wav");
+			Mix_PlayChannel(-1, ButtonS, 0);
 		}
 	}
 }

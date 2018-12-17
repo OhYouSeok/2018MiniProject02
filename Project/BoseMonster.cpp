@@ -17,6 +17,8 @@ void BossMonster::draw()
 void BossMonster::update()
 {
 	if (check == true) {
+		Mix_Chunk * ButtonS = Mix_LoadWAV("assets/hit.wav");
+		Mix_PlayChannel(-1, ButtonS, 0);
 		if (!TheTextureManager::Instance()->load("assets/BossMonster_Damaged.png",
 			"BossMonster", TheGame::Instance()->getRenderer())) {
 		}
