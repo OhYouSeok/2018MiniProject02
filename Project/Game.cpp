@@ -32,6 +32,16 @@ void Game::handleEvents()
 	{
 		/*m_pGameStateMachine->changeState(PlayState::Instance());*/
 	}
+	SDL_Event event;
+	if (SDL_PollEvent(&event)) {
+		switch (event.type) {
+		case SDL_QUIT:
+			m_bRunning = false;
+			break;
+		default:
+			break;
+		}
+	}
 }
 
 void Game::update() {

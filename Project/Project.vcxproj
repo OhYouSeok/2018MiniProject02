@@ -74,8 +74,12 @@
     <LibraryPath>..\..\Project\SDL2-2.0.8\lib\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>C:\Users\dhdbt\source\repos\OhYouSeok\2018MiniProject02\SDL2-2.0.8\include;$(IncludePath)</IncludePath>
-    <LibraryPath>..\..\Project\SDL2-2.0.8\lib\x64;C:\Users\dhdbt\Source\Repos\OhYouSeok\2018MiniProject02\SDL2-2.0.8\lib;C:\Users\dhdbt\source\repos\OhYouSeok\2018MiniProject02\SDL2-2.0.8\lib\x64;C:\Users\user\source\repos\2018MiniProject02\SDL2-2.0.8\lib\x64;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Users\dhdbt\Source\Repos\OhYouSeok\2018MiniProject02\SDL2-2.0.8\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\dhdbt\Source\Repos\OhYouSeok\2018MiniProject02\SDL2-2.0.8\lib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LibraryPath>C:\Users\dhdbt\Source\Repos\OhYouSeok\2018MiniProject02\SDL2-2.0.8\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Users\dhdbt\Source\Repos\OhYouSeok\2018MiniProject02\SDL2-2.0.8\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -98,7 +102,7 @@
     </ClCompile>
     <Link>
       <AdditionalDependencies>SDL2_mixer.lib;SDL2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -127,6 +131,8 @@
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>SDL2_mixer.lib;SDL2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <SubSystem>Windows</SubSystem>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>

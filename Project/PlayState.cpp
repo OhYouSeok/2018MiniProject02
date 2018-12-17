@@ -26,7 +26,7 @@ void PlayState::update()
 	}
 	for (int x = 3; x <= 9; x++) {
 		if (checkCollision(
-			dynamic_cast<SDLGameObject*>(m_gameObjects[2]),
+			dynamic_cast<SDLGameObject*>(m_gameObjects[1]),
 			dynamic_cast<SDLGameObject*>(m_gameObjects[x])))
 		{
 			TheGame::Instance()->getStateMachine()->pushState(
