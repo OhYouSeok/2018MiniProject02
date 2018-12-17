@@ -6,7 +6,7 @@
 #include "PlayState.h"
 #include <SDL_mixer.h>
 const std::string GameOverState::s_gameOverID = "GAMEOVER";
-
+GameOverState * GameOverState::s_pInstance = 0;
 
 void GameOverState::s_gameOverToMain()
 {
@@ -64,7 +64,7 @@ bool GameOverState::onEnter()
 	m_gameObjects.push_back(gameOver);
 	m_gameObjects.push_back(button1);
 	//m_gameObjects.push_back(button2);
-	std::cout << "entering PauseState\n";
+	std::cout << "entering GameOverState\n";
 	return true;
 }
 

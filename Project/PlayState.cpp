@@ -24,7 +24,7 @@ void PlayState::update()
 	for (int i = 0; i < m_gameObjects.size(); i++) {
 		m_gameObjects[i]->update();
 	}
-	for (int x = 4; x <= 10; x++) {
+	for (int x = 3; x <= 9; x++) {
 		if (checkCollision(
 			dynamic_cast<SDLGameObject*>(m_gameObjects[2]),
 			dynamic_cast<SDLGameObject*>(m_gameObjects[x])))
@@ -130,7 +130,6 @@ bool PlayState::onExit()
 		m_gameObjects[i]->clean();
 	}
 	m_gameObjects.clear();
-	WallManager::getInstance()->clean();
 
 	TheTextureManager::Instance()->clearFromTextureMap("Player");
 	TheTextureManager::Instance()->clearFromTextureMap("Enemy");

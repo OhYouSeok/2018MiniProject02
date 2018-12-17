@@ -2,7 +2,7 @@
 #include "Player.h"
 #include "Game.h"
 #include "MenuButton.h"
-#include "PlayState.h"
+#include "Prologue.h"
 #include "AnimatedGraphic.h"
 
 
@@ -24,13 +24,13 @@ void MenuState::render()
 		m_gameObjects[i]->draw();
 	}
 }
-void MenuState::s_menuToPlay()
+void MenuState::s_menuToPrologue()
 {
 	Mix_Chunk * ButtonS = Mix_LoadWAV("assets/selection.wav");
 	Mix_PlayChannel(-1, ButtonS, 0);
 	std::cout << "Play button clicked\n";
 	TheGame::Instance()->getStateMachine()->changeState(
-		new PlayState());
+		new Prologue());
 
 }
 
@@ -61,7 +61,7 @@ bool MenuState::onEnter()
 	GameObject* MainBG = new AnimatedGraphic(new LoaderParams(0, 0, 640, 520,"MainBG"), 2);
 	GameObject* button1 = new MenuButton(
 		new LoaderParams(260, 370,145 , 50, "playbutton"),
-		s_menuToPlay);
+		s_menuToPrologue);
 
 	GameObject* button2 = new MenuButton(
 		new LoaderParams(260, 430, 145, 50, "exitbutton"),
